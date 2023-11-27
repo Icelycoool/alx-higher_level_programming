@@ -1,13 +1,2 @@
 #!/bin/bash
-
-if [ -z "$PYFILE" ]; then
-	echo "PYFILE environment variable is not set."
-	exit 1
-fi
-
-if [ ! -f "$PYFILE" ]; then
-	echo "File '$PYFILE' does not exist."
-	exit 1
-fi
-
-python3 "$PYFILE"
+[ -z "$PYFILE" ] && echo "PYFILE environment variable is not set." && exit 1; [ ! -f "$PYFILE" ] && echo "File '$PYFILE' does not exist." && exit 1; python3 "$PYFILE"
