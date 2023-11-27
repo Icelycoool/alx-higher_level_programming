@@ -5,4 +5,9 @@ if [ -z "$PYFILE" ]; then
 	exit 1
 fi
 
+if [ ! -f "$PYFILE" ]; then
+	echo "File '$PYFILE' does not exist."
+	exit 1
+fi
+
 python3 "$PYFILE"
