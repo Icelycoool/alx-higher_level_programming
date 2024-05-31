@@ -107,4 +107,4 @@ class SinglyLinkedList:
             new_node = Node(value)
             new_node.data = value
             new_node.next_node = self.__head
-            self.__head = new_nod
+            self.__head = new_node
