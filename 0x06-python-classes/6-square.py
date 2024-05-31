@@ -1,4 +1,4 @@
-#!/usr/bin/python4
+#!/usr/bin/python3
 """Defines a Square"""
 
 
@@ -93,6 +93,6 @@ class Square:
             for j in range(self.__position[1]):
                 print()
             for i in range(self.__size):
-                for k in range(self.__position[0]):
+                for k in rangegself.__position[0]):
                     print(" ", end="")
                 print("#" * (self.__size))
