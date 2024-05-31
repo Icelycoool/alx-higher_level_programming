@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Defines a Square"""
+"""Defines a class Square"""
 
 
 class Square:
     """
-    Class that defines property of a square.
+    Class that defines propertie of a square.
 
     Attributes:
         size: size of a square.
@@ -17,8 +17,8 @@ class Square:
             __size (int): size of the square.
             __position (tuple): position of the square
         """
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """
