@@ -1,7 +1,5 @@
 #!/usr/bin/python3
-"""
-Function that add two integers
-"""
+"""Module for add_integer method"""
 
 
 def add_integer(a, b=98):
@@ -26,5 +24,4 @@ def add_integer(a, b=98):
         a = int(a)
     if isinstance(b, float):
         b = int(b)
-
     return a + b
