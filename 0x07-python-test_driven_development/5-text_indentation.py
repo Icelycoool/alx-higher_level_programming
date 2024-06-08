@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Mode text_indentation
 
-This module provides a function `text_indentation` that prints a 
+This module provides a function `text_indentation` that prints a
 text with 2  new lines after the following characters `.`, `?` and `:`
 """
 
