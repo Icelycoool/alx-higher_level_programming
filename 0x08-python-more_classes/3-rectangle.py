@@ -19,6 +19,12 @@ class Rectangle:
             Property getter for the rectangle's height.
         height(self, value):
             Property setter for the rangles's height.
+        area(self):
+            Calculates the area of the rectangle.
+        perimeter(self):
+            Calculates the perimeter of the rectangle.
+        __str__(self):
+            Returns a string representation of the rectangle using `#`.
     """
     def __init__(self, width=0, height=0):
         self.width = width

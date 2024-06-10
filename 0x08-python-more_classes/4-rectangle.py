@@ -23,6 +23,10 @@ class Rectangle:
             Calculates the area of the rectangle.
         perimeter(self):
             Calculates the perimeter of the rectangle.
+        __str__(self):
+            Returns a string representation of the rectangle using `#`.
+        __repr__(self):
+            Returns a string representation that can recreate the instance.
     """
     def __init__(self, width=0, height=0):
         self.width = width
@@ -77,6 +81,24 @@ class Rectangle:
         if value < 0:
             raise ValueError("height must be >= 0")
         self.__height = value
+
+    def __str__(self):
+        """
+        Returns a string representation of the rectangle using `#`.
+        """
+        rectangle_str = ""
+        if self.width == 0 or self.height == 0:
+            return rectangle_str
+
+        for _ in range(self.height):
+            rectangle_str += "#" * self.width + "\n"
+        return rectangle_str.strip()
+    def __repr__(self):
+        """
+        Returns a string representation of the rectangle to recreate
+        a new instance by using eval()
+        """
+        return f"Rectangle({self.__width}, {self.__height})"
 
     def area(self):
         """
