@@ -1,2 +1,1 @@
-None
-This is because 1 is an interned object, so `a` is just set to refer to the interned object
+0
