@@ -6,8 +6,8 @@ class LockedClass:
     """
     A class that allows dynamic creation of the 'first_name' attribute
 
-    The class uses the '__slot__' attribute to restrict creation of any instance
-    attribute other than 'first_name'.
+    The class uses the '__slot__' attribute to restrict creation of
+    any instance attribute other than 'first_name'.
 
     Attributes:
         first_name (str):
