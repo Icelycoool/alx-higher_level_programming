@@ -8,7 +8,7 @@ def is_same_class(obj, a_class):
 
     Args:
         object: The object to be checked.
-        a_class: The class to check if the object is part 
+        a_class: The class to check if the object is part
 
     Returns:
         True: If the object if an instance of the given class.
