@@ -15,14 +15,20 @@ def append_after(filename="", search_string="", new_string=""):
         new_string (str): The string to be inserted after the line
                             containing search_string.
     """
-    with open(filename, "r+", encoding="UTF-8") as f:
-        lines = f.readlines()
+    # Initialize an empty string to store the modified content
+    content = ""
 
-        for i, line in enumerate(lines):
+    # Open the file in read mode
+    with open(filename) as f:
+        # Iterate through each line in the file and append it to content
+        for line in f:
+            content += line
+
+            # if search_string is in line append it to the content
             if search_string in line:
-                lines.insert(i + 1, new_string)
-
-        f.seek(0)
-        f.truncate()
-
-        f.writelines(lines)
+                content += new_string
+    
+    # Reopen the file in write mode
+    with open(filename, "w") as f:
+        # Write the modified content back to the file
+        f.write(content)
