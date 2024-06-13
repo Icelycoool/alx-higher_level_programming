@@ -27,7 +27,7 @@ def append_after(filename="", search_string="", new_string=""):
             # if search_string is in line append it to the content
             if search_string in line:
                 content += new_string
-    
+
     # Reopen the file in write mode
     with open(filename, "w") as f:
         # Write the modified content back to the file
