@@ -23,5 +23,6 @@ def append_after(filename="", search_string="", new_string=""):
                 lines.insert(i + 1, new_string)
 
         f.seek(0)
+        f.truncate()
 
         f.writelines(lines)
