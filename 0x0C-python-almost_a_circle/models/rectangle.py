@@ -90,12 +90,15 @@ class Rectangle(Base):
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """Updates the rectangle's attributes with the provided arguments."""
-        attrs = ['id', 'width', 'height', 'x', 'y']
-        for i, value in enumerate(args):
-            if i < len(attrs):
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for i, value in enumerate(args[:len(attrs)]):
                 setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
 
     def __str__(self):
         """Returns a string representation of the rectangle"""
