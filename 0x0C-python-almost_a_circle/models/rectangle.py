@@ -81,17 +81,30 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Calculate the area of the rectangle"""
+        """
+        Calculate the area of the rectangle.
+
+        Returns:
+            int : The area of the rectangle (width * height).
+        """
         return self.__width * self.__height
 
     def display(self):
-        """Print the rectangle using the `#` character"""
+        """
+        Print the rectangle using the `#` character.
+        """
         print("\n" * self.y, end="")
         for _ in range(self.height):
             print(" " * self.x + "#" * self.width)
 
     def update(self, *args, **kwargs):
-        """Updates the rectangle's attributes with the provided arguments."""
+        """
+        Updates the rectangle's attributes with the provided arguments.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: A double pointer to a key/value for attributes to update.
+        """
         if args:
             attrs = ['id', 'width', 'height', 'x', 'y']
             for i, value in enumerate(args[:len(attrs)]):
