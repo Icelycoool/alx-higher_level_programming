@@ -123,20 +123,17 @@ class Base:
             list_objs (list): A list of instances who inherit from Base.
         """
         filename = f"{cls.__name__}.csv"
-        if not os.path.exists(filename):
-            return []
-        with open(filename, "w") as f:
-            if list_objs is None or lis_objs == []:
+        with open(filename, "w", newline="") as f:
+            if list_objs is None or list_objs == []:
                 f.write("[]")
             else:
                 if cls.__name__ == "Rectangle":
                     fieldnames = ["id", "width", "height", "x", "y"]
                 else:
                     fieldnames = ["id", "size", "x", "y"]
-            writer = csv.Dictwriter(f, fieldnames=fieldnames)
-            writer.writeheader()
-            for obj in list_objs:
-                writer.writerow(obj.to_dictionary())
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                for obj in list_objs:
+                    writer.writerow(obj.to_dictionary())
 
     @classmethod
     def load_from_file_csv(cls):
