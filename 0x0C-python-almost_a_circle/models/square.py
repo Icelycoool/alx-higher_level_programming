@@ -31,6 +31,15 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    def update(self, *args, **kwargs):
+        if args:
+            attrs = ['id', 'size', 'x', 'y']
+            for i, value in enumerate(args[:len(attrs)]):
+                setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
     def __str__(self):
         """
         Returns a string representation of the square.
