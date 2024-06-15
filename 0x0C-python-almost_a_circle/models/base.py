@@ -2,6 +2,7 @@
 """
 Module that defines a base class
 """
+import os
 import json
 
 
@@ -95,3 +96,19 @@ class Base:
             else:
                 list_dicts = [obj.to_dictionary() for obj in list_objs]
                 f.write(cls.to_json_string(list_dicts))
+
+    @classmethod
+    def load_from_file(cls):
+        """
+        Returns a list of instances from a JSON file.
+
+        Returns:
+            list: List of instances of the class.
+        """
+        filename = f"{cls.__name__}.json"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r") as f:
+            json_string = f.read()
+        list_dicts = cls.from_json_string(json_string)
+        return [cls.create(**d) for d in list_dicts]
