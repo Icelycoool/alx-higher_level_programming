@@ -157,11 +157,12 @@ class Base:
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
             return []
-        
+
     @staticmethod
     def draw(list_rectangles, list_squares):
         """
-        Opens a window and draws all the Rectangles and Squares using Turtle graphics.
+        Opens a window and draws all the Rectangles and
+        Squares using Turtle graphics.
 
         Args:
             list_rectangles (list): List of Rectangle instances.
@@ -172,6 +173,7 @@ class Base:
         screen.bgcolor("white")
 
         t = turtle.Turtle()
+        t.pensize(3)
         t.speed(1)
 
         for rectangle in list_rectangles:
@@ -194,5 +196,6 @@ class Base:
             for _ in range(4):
                 t.forward(square.size)
                 t.right(90)
+
         t.hideturtle()
         turtle.done()
