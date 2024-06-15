@@ -4,6 +4,7 @@ Module that defines a base class
 """
 import os
 import json
+import csv
 
 
 class Base:
@@ -112,3 +113,48 @@ class Base:
             json_string = f.read()
         list_dicts = cls.from_json_string(json_string)
         return [cls.create(**d) for d in list_dicts]
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        """
+        Writes the CSV string representation of list_objs to a file.
+
+        Args:
+            list_objs (list): A list of instances who inherit from Base.
+        """
+        filename = f"{cls.__name__}.csv"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "w") as f:
+            if list_objs is None or lis_objs == []:
+                f.write("[]")
+            else:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+            writer = csv.Dictwriter(f, fieldnames=fieldnames)
+            writer.writeheader()
+            for obj in list_objs:
+                writer.writerow(obj.to_dictionary())
+
+    @classmethod
+    def load_from_file_csv(cls):
+        """
+        Returns a list of instances from a CSV file.
+
+        Returns:
+            list: List of instances of the class.
+        """
+        filename = f"{cls.__name__}.csv"
+        if not os.path.exists(filename):
+            return []
+        with open(filename, "r", newline="") as f:
+            if cls.__name__ == "Rectangle":
+                fieldnames = ["id", "width", "height", "x", "y"]
+            else:
+                fieldnames = ["id", "size", "x", "y"]
+            list_dicts = csv.DictReader(f, fieldnames=fieldnames)
+            list_dicts = [dict([k, int(v)]
+                               for k, v in row.items()) for row in list_dicts]
+            return [cls.create(**d) for d in list_dicts]
