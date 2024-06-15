@@ -147,14 +147,15 @@ class Base:
             list: List of instances of the class.
         """
         filename = f"{cls.__name__}.csv"
-        if not os.path.exists(filename):
+        try:
+            with open(filename, "r", newline="") as f:
+                if cls.__name__ == "Rectangle":
+                    fieldnames = ["id", "width", "height", "x", "y"]
+                else:
+                    fieldnames = ["id", "size", "x", "y"]
+                list_dicts = csv.DictReader(f, fieldnames=fieldnames)
+                list_dicts = [dict([k, int(v)] for k, v in row.items())
+                              for row in list_dicts]
+                return [cls.create(**d) for d in list_dicts]
+        except IOError:
             return []
-        with open(filename, "r", newline="") as f:
-            if cls.__name__ == "Rectangle":
-                fieldnames = ["id", "width", "height", "x", "y"]
-            else:
-                fieldnames = ["id", "size", "x", "y"]
-            list_dicts = csv.DictReader(f, fieldnames=fieldnames)
-            list_dicts = [dict([k, int(v)]
-                               for k, v in row.items()) for row in list_dicts]
-            return [cls.create(**d) for d in list_dicts]
