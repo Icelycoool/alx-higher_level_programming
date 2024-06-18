@@ -81,10 +81,49 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
-        """Calculate the area of the rectangle"""
+        """
+        Calculate the area of the rectangle.
+
+        Returns:
+            int : The area of the rectangle (width * height).
+        """
         return self.__width * self.__height
 
     def display(self):
-        """Print the rectangle using the `#` character"""
+        """
+        Print the rectangle using the `#` character.
+        """
+        print("\n" * self.y, end="")
         for _ in range(self.height):
-            print("#" * self.width)
+            print(" " * self.x + "#" * self.width)
+
+    def update(self, *args, **kwargs):
+        """
+        Updates the rectangle's attributes with the provided arguments.
+
+        Args:
+            *args: Variable length argument list.
+            **kwargs: A double pointer to a key/value for attributes to update.
+        """
+        if args:
+            attrs = ['id', 'width', 'height', 'x', 'y']
+            for i, value in enumerate(args[:len(attrs)]):
+                setattr(self, attrs[i], value)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
+
+    def to_dictionary(self):
+        """Returns the dictionary representation of a Rectangle"""
+        return {
+            'id': self.id,
+            'width': self.width,
+            'height': self.height,
+            'x': self.x,
+            'y': self.y
+        }
+
+    def __str__(self):
+        """Returns a string representation of the rectangle"""
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
+            self.id, self.x, self.y, self.width, self.height)
