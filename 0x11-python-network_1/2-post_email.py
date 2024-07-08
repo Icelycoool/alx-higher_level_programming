@@ -11,8 +11,9 @@ from urllib.request import Request, urlopen
 
 if __name__ == "__main__":
     url = sys.argv[1]
-    value = {"email": sys.argv[2]}
-    data = urlencode(value).encode("ascii")
+    email = sys.argv[2]
+    data = urlencode({"email": email}).encode("ascii")
+
     req = Request(url, data)
 
     with urlopen(req) as response:
